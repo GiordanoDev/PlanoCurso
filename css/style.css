@@ -1,0 +1,263 @@
+/* css/style.css */
+
+:root {
+    --primary-color: #4A90E2;
+    --secondary-color: #f4f7fc;
+    --text-color: #333;
+    --light-text-color: #777;
+    --border-color: #e0e0e0;
+    --white: #fff;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.main-header {
+    background-color: var(--white);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    border-radius: 50%;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    margin-left: 1.5rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: var(--light-text-color);
+    margin-bottom: 2rem;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.card {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1.5rem;
+}
+
+.form-container h2, .plano-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+textarea {
+    resize: vertical;
+}
+
+.form-buttons {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: #3a7ac8;
+}
+
+.btn-secondary {
+    background-color: #e0e0e0;
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: #d0d0d0;
+}
+
+.info-sidebar .card h3 {
+    margin-bottom: 1rem;
+}
+
+.info-sidebar .card p {
+    margin-bottom: 0.75rem;
+    color: var(--light-text-color);
+}
+.info-sidebar .card p strong {
+    color: var(--text-color);
+}
+
+#plano-gerado-container {
+    margin-top: 2rem;
+}
+
+.plano-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#loading {
+    text-align: center;
+    padding: 2rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+
+/* ESTILOS PARA O DOCUMENTO PDF (IMPRESSÃO) */
+@media print {
+    body, html {
+        background-color: #fff;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Esconde tudo, exceto a área do plano de aula */
+    body * {
+        visibility: hidden;
+    }
+    #plano-gerado-conteudo, #plano-gerado-conteudo * {
+        visibility: visible;
+    }
+    #plano-gerado-conteudo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 2cm; /* Margens da página */
+    }
+
+    /* Formatação do conteúdo para impressão */
+    #plano-gerado-conteudo h1 {
+        font-family: Arial, sans-serif;
+        font-size: 14pt;
+        color: black;
+    }
+
+    #plano-gerado-conteudo p,
+    #plano-gerado-conteudo li {
+        font-family: Arial, sans-serif;
+        font-size: 12pt;
+        color: black;
+        text-align: justify;
+        line-height: 1.5;
+    }
+
+    #plano-gerado-conteudo h2, 
+    #plano-gerado-conteudo h3 {
+        font-family: Arial, sans-serif;
+        font-size: 12pt;
+        font-weight: bold;
+        color: black;
+    }
+
+    /* Evita quebras de página indesejadas */
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+    
+    /* Não imprime links e botões */
+    a[href]:after {
+        content: none !important;
+    }
+}

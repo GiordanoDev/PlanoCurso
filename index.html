@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect - Planejamento de Cursos com IA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <img src="img/logo.jpg" alt="Logo EduConnect" class="logo">
+            <nav>
+                <a href="#" class="nav-link active">Dashboard</a>
+                <a href="#" class="nav-link">Meus Cursos</a>
+                <a href="#" class="nav-link">Relatórios</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Bem-vindo, Professor! 👋</h1>
+        <p class="subtitle">Otimize seus planos de curso com inteligência artificial</p>
+
+        <div class="content-wrapper">
+            <div class="form-container">
+                <h2>Criar Novo Plano de Curso</h2>
+                
+                <form id="plano-form" method="POST">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nome-instrutor">Nome do Instrutor</label>
+                            <input type="text" id="nome-instrutor" name="nome-instrutor" placeholder="Ex: João da Silva" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="codigo-turma">Código da Turma</label>
+                            <input type="text" id="codigo-turma" name="codigo-turma" placeholder="Ex: Téc.DS.2025.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nome-curso">Nome do Curso</label>
+                            <input type="text" id="nome-curso" name="nome-curso" placeholder="Ex: Introdução ao JavaScript" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="duracao">Duração (horas)</label>
+                            <input type="number" id="duracao" name="duracao" placeholder="40" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nivel-curso">Nível do Curso</label>
+                            <select id="nivel-curso" name="nivel-curso" required>
+                                <option value="">Selecione o nível</option>
+                                <option value="Iniciante">Iniciante</option>
+                                <option value="Intermediário">Intermediário</option>
+                                <option value="Avançado">Avançado</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="area-conhecimento">Área de Conhecimento</label>
+                            <input type="text" id="area-conhecimento" name="area-conhecimento" placeholder="Ex: Desenvolvimento Web" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="objetivos-curso">Objetivos do Curso</label>
+                        <textarea id="objetivos-curso" name="objetivos-curso" rows="4" placeholder="Descreva os principais objetivos e competências que os alunos devem desenvolver..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="publico-alvo">Público-Alvo</label>
+                        <textarea id="publico-alvo" name="publico-alvo" rows="3" placeholder="Descreva o perfil dos alunos (conhecimentos prévios, experiência, etc.)" required></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" id="gerar-plano-btn" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+                            Gerar Plano com IA
+                        </button>
+                        <button type="button" id="limpar-form-btn" class="btn btn-secondary">Limpar</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="info-sidebar">
+                <div class="card">
+                    <h3>Estatísticas</h3>
+                    <p><strong>Cursos Criados:</strong> 12</p>
+                    <p><strong>Planos Otimizados:</strong> 8</p>
+                    <p><strong>Tempo Economizado:</strong> 24h</p>
+                </div>
+                <div class="card">
+                    <h3>Cursos Recentes</h3>
+                    <p><strong>React Avançado</strong><br><small>Criado há 2 dias</small></p>
+                    <p><strong>Python para Iniciantes</strong><br><small>Criado há 1 semana</small></p>
+                    <p><strong>UX/UI Design</strong><br><small>Criado há 2 semanas</small></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="plano-gerado-container" class="card" style="display: none;">
+            <div class="plano-header">
+                <h2>Plano de Curso Gerado</h2>
+                <button id="exportar-pdf-btn" class="btn btn-primary">Exportar para PDF</button>
+            </div>
+            <div id="loading" style="display: none;">Gerando plano de aula, por favor aguarde...</div>
+            <div id="plano-gerado-conteudo">
+                </div>
+        </div>
+
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
